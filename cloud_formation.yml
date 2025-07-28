@@ -1,0 +1,17 @@
+yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A basic CloudFormation template to create an S3 bucket.
+
+Resources:
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub 'my-s3-bucket-${AWS::AccountId}'
+
+Outputs:
+  BucketName:
+    Value: !Ref MyS3Bucket
+    Description: The name of the S3 bucket.
+  BucketARN:
+    Value: !GetAtt MyS3Bucket.Arn
+    Description: The ARN of the S3 bucket.
